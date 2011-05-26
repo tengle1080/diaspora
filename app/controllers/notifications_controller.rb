@@ -2,9 +2,7 @@
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
-class NotificationsController < ApplicationController
-  before_filter :authenticate_user!
-  respond_to :html, :json
+class NotificationsController < VannaController
 
 
   def update
@@ -19,10 +17,10 @@ class NotificationsController < ApplicationController
 
   def index
     @aspect = :notification
-    @notifications = Notification.find(:all, :conditions => {:recipient_id => current_user.id},
+    notifications = Notification.find(:all, :conditions => {:recipient_id => current_user.id},
                                        :order => 'created_at desc', :include => [:target, {:actors => :profile}]).paginate :page => params[:page], :per_page => 25
-    @group_days = @notifications.group_by{|note| I18n.l(note.created_at, :format => I18n.t('date.formats.fullmonth_day')) }
-    respond_with @notifications
+    group_days = notifications.group_by{|note| I18n.l(note.created_at, :format => I18n.t('date.formats.fullmonth_day')) }
+    {:group_days => group_days, :current_user => current_user, :notifications => notifications}
   end
 
   def read_all
