@@ -9,6 +9,6 @@
 #   * pod_url: As in app.yml, normalized with a trailing /.
 #   * pod_uri: An uri object derived from pod_url.
 
-require File.join(Rails.root, 'lib', 'app_config')
+#require File.join(Rails.root, 'lib', 'app_config')
 
 # AppConfig.configure_for_environment(Rails.env)

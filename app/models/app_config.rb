@@ -5,21 +5,21 @@
 class AppConfig < Settingslogic
   source "#{Rails.root}/config/app_base.yml"
   namespace Rails.env
-  load!
+  #load!
 
   def self.pod_url
-    unless self[:pod_url] =~ /^(https?:\/\/)/
-      self[:pod_url] = "http://#{self[:pod_url]}"
+    unless self['pod_url'] =~ /^(https?:\/\/)/
+      self['pod_url'] = "http://#{self.pod_url}"
     end
-    self[:pod_url]
+    self.pod_url
   end
 
   def self.pod_uri
-    return @@pod_uri if @@pod_uri
+    return self['pod_uri'] if self['pod_uri']
 
     require 'uri'
     begin
-      @@pod_uri = URI.parse(self.pod_url)
+      self['pod_uri'] = URI.parse(self.pod_url)
     rescue
       puts "WARNING: pod url " + self.pod_url + " is not a legal URI"
     end
