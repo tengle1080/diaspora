@@ -35,6 +35,7 @@ module SocketsHelper
         },
           :current_user => user,
           :all_aspects => user.aspects,
+          :reshare => nil
         }
         v = render_to_string(:partial => 'shared/stream_element', :locals => post_hash)
       elsif object.is_a? Person
