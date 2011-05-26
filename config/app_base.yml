@@ -105,13 +105,16 @@ default:
 
 # Use this sections to overide settings from default in the specific environments
 development:
+  <<: *default
   enable_splunk_logging: false
 
 production:
+  <<: *default
   single_process_mode: false
 
 # Do not touch unless you know what you're doing
 test:
+  <<: *default
   pod_url: "http://example.org/"
   socket_port: 8081
   enable_splunk_logging: false

@@ -11,4 +11,4 @@
 
 require File.join(Rails.root, 'lib', 'app_config')
 
-AppConfig.configure_for_environment(Rails.env)
+# AppConfig.configure_for_environment(Rails.env)
