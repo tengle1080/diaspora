@@ -250,6 +250,7 @@ ActiveRecord::Schema.define(:version => 20110525213325) do
     t.string   "actor_url"
     t.integer  "objectId"
     t.integer  "root_id"
+    t.integer  "ancestor_id"
   end
 
   add_index "posts", ["author_id"], :name => "index_posts_on_person_id"

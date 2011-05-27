@@ -78,6 +78,9 @@ end
 Factory.define :reshare do |r|
   r.association(:root, :public => true, :factory => :status_message)
   r.association(:author, :factory => :person)
+  r.after_build { |u|
+    u.ancestor = u.root
+  }
 end
 
 Factory.define :photo do |p|
