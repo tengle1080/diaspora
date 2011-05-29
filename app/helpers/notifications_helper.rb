@@ -38,10 +38,9 @@ module NotificationsHelper
     end
   end
 
-  def notification_people_link(note)
-    actors = note.actors
-    number_of_actors = actors.count
-    actor_links = actors.collect{ |person| link_to("#{h(person.name.titlecase)}", person_path(person))}
+  def notification_people_link(actors)
+    number_of_actors = actors.size
+    actor_links = actors.collect{ |person| link_to(person.name.titlecase, person_path(person))}
     if number_of_actors < 4
       message =  actor_links.join(', ')
     else

@@ -26,7 +26,7 @@
                   = render 'aspect_memberships/aspect_dropdown', :contact => contact, :person => note.target, :hang => 'left'
 
               %span.from
-                = notification_people_link(note)
+                = notification_people_link(note[:actors])
                 = object_link(note)
 
               %br
