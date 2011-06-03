@@ -6,6 +6,11 @@ class HomeController < ApplicationController
 
   def show
     if current_user
+
+      if is_mobile_device?
+        return
+      end
+
       if params[:home]
         redirect_to :controller => 'aspects', :action => 'index'
       else
